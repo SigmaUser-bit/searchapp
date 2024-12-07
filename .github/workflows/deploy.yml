@@ -1,29 +1,28 @@
-name: Deploy Website
+name: Flask App CI/CD
 
 on:
   push:
     branches:
-      - main  # Change this to your default branch if needed
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
+        python-version: '3.12'
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt  # Ensure you have a `requirements.txt` with necessary libraries
+        pip install -r requirements.txt
 
-    - name: Run app.py
+    - name: Run application
       run: |
-        python app.py  # Adjust this if needed (e.g., to run a server or build a static site)
-
+        python app.py
